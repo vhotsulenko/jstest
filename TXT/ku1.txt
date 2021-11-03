@@ -1,0 +1,14 @@
+﻿КУ1 (пара), КУ3 (штука)<br>
+<br>&nbsp;&nbsp;&nbsp; Плоскорезы предназначены для безотвального
+выравнивания и прополки почвы, позволяют
+обрабатывать междурядья овощных культур.
+<br>&nbsp;&nbsp;&nbsp; В ассортименте:
+<br>КУ1 (пара) - <a class="tooltip" href="javascript:changeMotoblokImage('ku1.jpg','КУ1 - Плоскорезы 320 мм',
+        'ku1')">плоскорезы шириной 320 мм<span class= "tooltiptext"> <image  src='IMG_tool/ku1_tool.jpg'></span></a>. Агрегатируются с мотоблоком при
+помощи <a class="tooltip" href="#">регулировочной<span class= "tooltiptext"> <image  src='IMG_tool/scepka_zirka_105_tool.jpg'></span></a> и 
+<a class="tooltip" href="#">двойной сцепки<span class= "tooltiptext"> <image  src='IMG_tool/scepka_zirka_dv_tool.jpg'></span></a> (приобретается
+отдельно). Вес 4,4 кг.
+<br>КУ3 (штука) - <a class="tooltip" href="javascript:changeMotoblokImage('ku3.jpg','КУ3 - Плоскорез 700 мм',
+        'ku3')">плоскорез шириной 700 мм<span class= "tooltiptext"> <image  src='IMG_tool/ku3_tool.jpg'></span></a>. Агрегатируется с мотоблоком при
+помощи <a class="tooltip" href="#">регулировочной сцепки<span class= "tooltiptext"> <image  src='IMG_tool/scepka_zirka_105_tool.jpg'></span></a> (приобретается
+отдельно).  Вес 4,7 кг.

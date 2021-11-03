@@ -1,0 +1,13 @@
+﻿КК1, КК3, КК4
+<br>&nbsp;&nbsp;&nbsp; Предназначены для выкапывания картофеля и других корнеплодов, агрегатируются с мотоблоком при помощи 
+<a class="tooltip" href="#">регулировочной сцепки<span class= "tooltiptext"> <image  src='IMG_tool/scepka_zirka_105_tool.jpg'></span></a> (приобретается
+отдельно). 
+<br>&nbsp;&nbsp;&nbsp;В ассортименте:
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('kk1.jpg','Картофелекопатель Универсальный',
+        'кк_все')">КК1 "Универсальный":<span class= "tooltiptext">КК1 <image  src='IMG_tool/kk1_tool.jpg'></span></a> Высота 500 мм; ширина 330 мм.  вес 5 кг. 
+
+   <br><a class="tooltip" href="javascript:changeMotoblokImage('kk3.jpg','Картофелекопатель мотоблочный',
+        'кк_все')">КК3 "Мотоблочный":<span class= "tooltiptext">КК3 <image  src='IMG_tool/kk3_tool.jpg'></span></a> Высота 500 мм; ширина 400 мм.  вес 5,5 кг. 
+
+    <br><a class="tooltip" href="javascript:changeMotoblokImage('kk4.jpg','Картофелекопатель усиленный',
+        'кк_все')">КК4 "Усиленный":<span class= "tooltiptext">КК4 <image  src='IMG_tool/kk4_tool.jpg'></span></a> Высота 500 мм; ширина 430 мм.  вес 6,8 кг. 

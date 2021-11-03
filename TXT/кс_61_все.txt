@@ -1,0 +1,12 @@
+﻿КС3, КС4, КС8
+<br>&nbsp;&nbsp;&nbsp; Предназначены для
+механизации посадки картофеля. Привод механизма посадки приводится в действия от опорных колес. Емкость бункера 20 л.
+Шаг посадки регулируется (200 или 250 мм).
+Глубина посадки регулируется 50-100 мм.
+<br>&nbsp;&nbsp;&nbsp;В ассортименте:
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('ks3.jpg','Картофелесажалка цепная',
+        'кс3')">КС3 Картофелесажалка цепная:<span class= "tooltiptext tooltip-top">КС3 <image  src='IMG_tool/ks3_tool.jpg'></span></a> Габариты 900х700х950 мм; вес 31 кг. 
+<br><a class="tooltip" href="javascript:changeMotoblokImage('ks4.jpg','Картофелесажалка ленточная',
+        'кс4')">КС4 Картофелесажалка ленточная:<span class= "tooltiptext tooltip-top">КС4 <image  src='IMG_tool/ks4_tool.jpg'></span></a> Габариты 860х740х950 мм; вес 40 кг. 
+<br><a class="tooltip" href="javascript:changeMotoblokImage('ks8.jpg','Картофелесажалка цепная с БДУ',
+        'кс8')">КС8 Картофелесажалка цепная с БДУ:<span class= "tooltiptext tooltip-top">КС8 <image  src='IMG_tool/ks8_tool.jpg'></span></a> Габариты 900х700х950 мм; вес 36 кг. 

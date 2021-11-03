@@ -1,0 +1,10 @@
+﻿КК8, КК10
+<br>&nbsp;&nbsp;&nbsp; Предназначены для
+выкапывания картофеля и других корнеплодов, отделения клубней от земли
+и укладки на поверхность.
+<br>&nbsp;&nbsp;&nbsp;В ассортименте:
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('kk8.jpg','Картофелекопатель 2-х эксцентриковый',
+        'кк8')">КК8 Картофелекопатель 2-х эксцентриковый:<span class= "tooltiptext tooltip-top">КК8 <image  src='IMG_tool/kk8_tool.jpg'></span></a> Габариты 760х650х730 мм; ширина ножа 390 мм; вес 45 кг. 
+
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('kk10.jpg','Картофелекопатель транспортерный',
+        'кк10')">КК10 Картофелекопатель транспортерный:<span class= "tooltiptext tooltip-top">КК10 <image  src='IMG_tool/kk10_tool.jpg'></span></a> Габариты 900х740х700 мм; ширина ножа 455 мм; вес 63 кг. 

@@ -1,0 +1,9 @@
+﻿ЗХ1, ЗХ2
+<br>&nbsp;&nbsp;&nbsp; Используется для увеличения тягового усилия, крутящего момента и уменьшения скорости хода. 
+Передаточное число цепного ходоуменьшителя 2,5 : 1, шестигранный вал 32 мм.
+<br>&nbsp;&nbsp;&nbsp;В ассортименте:
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('zh1.jpg','Ходоуменьшитель Z-105 (8 отверстий (250 х 90 мм, 160 х 78 мм) в основании 150 х 280 мм)',
+        'зх1')">ЗХ1 Ходоуменьшитель Z-105: <span class= "tooltiptext tooltip-top">ЗХ1 <image  src='IMG_tool/zh1_tool.jpg'></span></a> 8 отверстий (250 х 90 мм, 160 х 78 мм) в основании 150 х 280 мм); вес 17 кг. 
+
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('zh2.jpg','Ходоуменьшитель Z-135 (4 отверстия (250 мм х 98 мм) в основании 300 х 150 мм',
+        'зх2')">ЗХ2 Ходоуменьшитель Z-135: <span class= "tooltiptext tooltip-top">ЗХ2 <image  src='IMG_tool/zh2_tool.jpg'></span></a> 4 отверстия (250 х 98 мм) в основании 300 х 150 мм; вес 17 кг. 

@@ -1,0 +1,7 @@
+﻿КО20, КО22
+<br>&nbsp;&nbsp;&nbsp; Грунтозацепы используются для
+улучшения сцепления с почвой, устанавливаются парами на вал редуктора.
+ <br><a class="tooltip" href="javascript:changeMotoblokImage('ko20.jpg','Грунтозацепы',
+        'ko_61')">КО20 Ø380х150<span class= "tooltiptext tooltip-top"><image  src='IMG_tool/ko20_tool.jpg'></span></a>  вес 15,3 кг.
+ <br><a class="tooltip" href="javascript:changeMotoblokImage('ko22.jpg','Грунтозацепы',
+        'ko_61')">КО22 Ø380х150<span class= "tooltiptext tooltip-top"><image  src='IMG_tool/ko22_tool.jpg'></span></a>  вес 21 кг.

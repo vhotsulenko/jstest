@@ -1,0 +1,15 @@
+﻿КО2, КО10, КО16, КО17
+<br>&nbsp;&nbsp;&nbsp; Грунтозацепы используются для
+улучшения сцепления с почвой, устанавливаются парами на вал редуктора.
+<br>&nbsp;&nbsp;&nbsp;В ассортименте:
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('ko2.jpg','Грунтозацепы ',
+        'ko_105')">КО2 Ø340х110<span class= "tooltiptext"><image  src='IMG_tool/ko2_tool.jpg'></span></a>  вес 7 кг.
+
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('ko10.jpg','Грунтозацепы',
+        'ko_105')">КО10 Ø380х150<span class= "tooltiptext tooltip-top"><image  src='IMG_tool/ko10_tool.jpg'></span></a>  вес 9,6 кг.
+
+ <br><a class="tooltip" href="javascript:changeMotoblokImage('ko16.jpg','Грунтозацепы',
+        'ko_105')">КО16 Ø450х110<span class= "tooltiptext tooltip-top"><image  src='IMG_tool/ko16_tool.jpg'></span></a>  вес 10,4 кг.
+
+ <br><a class="tooltip" href="javascript:changeMotoblokImage('ko17.jpg','Грунтозацепы',
+        'ko_105')">КО17 Ø380х150<span class= "tooltiptext tooltip-top"><image  src='IMG_tool/ko17_tool.jpg'></span></a>  вес 12,9 кг.

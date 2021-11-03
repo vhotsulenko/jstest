@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Выбор навесного оборудования</title>
+  <script src="jquery-3.4.1.min.js"></script>
+  <style type="text/css">
+    img {
+      max-width: 100%;
+      height: auto;
+      width: auto\9;
+      /* ie8 */
+    }
+
+    .r2 {
+      background: #e9f5fd;
+      border: 1px solid #0099FF;
+      padding: 1px 10px;
+      /* Закругленные уголки */
+      -moz-border-radius: 15px;
+      -webkit-border-radius: 15px;
+      border-radius: 15px;
+      /* Тень вокруг блока */
+      -moz-box-shadow: 0 0 5px #ff7f00;
+      -webkit-box-shadow: 0 0 5px #ff7f00;
+      box-shadow: 0 0 15px #147F97;
+    }
+
+    .toggle {
+      display: none;
+    }
+
+    .table-container {
+      font-size: 20px;
+      line-height: 20px;
+      width: 100%;
+      overflow-y: auto;
+      _overflow: auto;
+      margin: 0 0 1em;
+
+    }
+
+    table td:before {
+      content: attr(data-label);
+    }
+
+    .tabletree {
+      font-size: 20px;
+      line-height: 20px;
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: normal;
+      word-wrap: break-word;
+      /*word-break: break-all;*/
+    }
+
+    .tabletree ul {
+      position: relative;
+      display: table-cell;
+      margin: 0 !important;
+      padding: 2 0 0 11px !important;
+      vertical-align: middle;
+    }
+
+    .tabletree li {
+      display: table;
+      position: relative;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .tabletree div {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    /* Линии */
+    .tabletree ul:before,
+    .tabletree ul li:after,
+    .tabletree ul li:not(:last-child):not(:first-child):before {
+      content: "";
+      position: absolute;
+      left: -20px;
+      top: 0;
+      width: 12px;
+      height: 50%;
+      border-bottom: 2px solid #999;
+    }
+
+    .tabletree .none ul:before,
+    .tabletree .none ul li:after,
+    .tabletree .none ul li:not(:last-child):not(:first-child):before {
+      border-bottom: 0px;
+    }
+
+    .tabletree ul:before {
+      left: 0;
+    }
+
+    .tabletree ul li:not(:only-child):after {
+      border-left: 2px solid #999;
+    }
+
+    .tabletree .none ul li:not(:only-child):after {
+      border-left: 0px
+    }
+
+    .tabletree ul li:not(:only-child):first-child:after {
+      top: 50%;
+      border-top: 2px solid #999;
+      border-bottom-color: transparent;
+    }
+
+    .tabletree ul li:not(:last-child):not(:first-child):before {
+      height: 100%;
+      border-left: 2px solid #999;
+      border-bottom-color: transparent;
+    }
+
+    .tabletree .none ul li:not(:only-child):first-child:after {
+      border-top: 0px
+    }
+
+    .tabletree .none ul li:not(:last-child):not(:first-child):before {
+      border-left: 0px
+    }
+
+
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 0px dotted black;
+    }
+
+
+    .tooltip .tooltiptext {
+
+      visibility: hidden;
+      width: 120px;
+      background-color: #F7F7F7;
+      color: black;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .tooltip-top {
+
+      bottom: 100%;
+      left: 100%;
+
+
+    }
+
+    .tooltip-bottom {
+
+
+      left: 50%;
+      margin-left: -20px;
+      margin-top: 20px;
+
+    }
+
+    .tooltip-right {
+
+      top: -5px;
+      left: 105%;
+
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+
+
+    @media screen and (min-width: 1000px) {
+
+      .table-container div {
+        font-size: 20px;
+      }
+    }
+
+    @media screen and (min-width: 600px) and (max-width: 999px) {
+
+      .table-container div {
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (min-width: 500px) and (max-width: 799px) {
+
+      .table-container div {
+        font-size: 14px;
+      }
+
+      .tooltip .tooltiptext {
+        width: 120px;
+        top: 100%;
+        left: 50%;
+        margin-left: -60px;
+      }
+    }
+
+    @media screen and (min-width: 300px) and (max-width: 599px) {
+      .table-container div {
+        font-size: 12px;
+      }
+
+      table td.motobl {
+        display: none;
+        data-label: none;
+      }
+
+
+      #motoblok,
+      #vod,
+      #imgm {
+        display: none;
+
+      }
+
+      div.txt-motobl {
+        display: none;
+      }
+
+
+
+      #slide_lft {
+        position: fixed;
+        opacity: 1.0;
+        top: 10px;
+        left: 0;
+        -webkit-transition-duration: 0.5s;
+        -moz-transition-duration: 0.5s;
+        -o-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        background: #147F97;
+        color: #fff;
+        padding: 40px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+
+      }
+
+      #slide_in {
+        position: fixed;
+        opacity: 1.0;
+        filter: alpha(opacity=100);
+        min-height: 95%;
+        top: 10px;
+        left: -250px;
+        -webkit-transition-duration: 0.5s;
+        -moz-transition-duration: 0.5s;
+        -o-transition-duration: 0.5s;
+        transition-duration: 0.5s;
+        box-shadow: 0 0 30px #777;
+        background: #147F97;
+        color: #fff;
+        width: 250px;
+        padding: 30px;
+        box-sizing: padding-box;
+        z-index: 999
+      }
+
+      #slide_lft:hover {
+        left: 250px;
+      }
+
+      #slide_lft:hover #slide_in {
+        left: 0;
+      }
+
+
+
+
+      .tooltip .tooltiptext {
+        width: 120px;
+        top: 100%;
+        left: 50%;
+        margin-left: -60px;
+      }
+
+
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="table-container">
+    <table width="100%" border="0" cellpadding="5" cellspacing="0">
+      <tr>
+        <td width="10%"></td>
+        <td>
+
+          <table width="90%" border="0" cellpadding="15" cellspacing="0">
+            <tbody class="r2">
+              <tr>
+
+
+                <td width="30%" valign="top" bgcolor="#f0f0f0">
+                  <table width="100%" cellpadding="2" cellspacing="1">
+                    <tr>
+                      <td data-label="Выберите" id=imgm bgcolor="#ffffff"> тип охлаждения двигателя</td>
+                    </tr>
+                    <tr>
+                      <td id=vod bgcolor="#ffffff" width="100%"><img id="motoblok" src='IMG/motobl.png'></td>
+                    </tr>
+                    <tr>
+                      <td>
+
+
+
+                        <div class="info">
+
+                        </div>
+                      </td>
+                    </tr>
+
+                  </table>
+                </td>
+
+
+                <td width="90%" valign="top" bgcolor="#ffffee">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Radios" id="Radios1" value="option1">
+                    <label class="form-check-label" for="Radios1">
+                      Водяное охлаждение
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="Radios" id="Radios2" value="option2">
+                    <label class="form-check-label" for="Radios2">
+                      Воздушное
+                    </label>
+                  </div>
+
+
+                  <div id=baza>
+                    <ul class="tabletree">
+                      <li>
+                        <div class="txt-motobl">Мотоблок</div>
+                        <ul>
+                          <li>
+                            <div>Передняя часть сцепки</div>
+                            <ul>
+                              <li>
+                                <div>Сеялки (2-х, 4-х рядные)</div>
+                              </li>
+                              <li>
+                                <div>Чеснокосажалки (1-но, 2-х, 3-х, 4-х рядные)</div>
+                              </li>
+                              <li>
+                                <div>Комплект для посадки картофеля (универсальный)</div>
+                              </li>
+
+                              <li>
+                                <div>Адаптер</div>
+                                <ul>
+                                  <li>
+                                    <div>Грабли механические</div>
+                                  </li>
+                                  <li>
+                                    <div>Грабли "Солнышко" 2-х колесные</div>
+                                  </li>
+
+                                </ul>
+                              </li>
+                            </ul>
+                          <li>
+                            <div> Сцепка регулировочная</div>
+                            <ul>
+                              <li>
+                                <div>Сцепка двойная</div>
+                                <ul>
+                                  <li>
+                                    <div>Окучники "Стрелы"</div>
+                                  </li>
+                                  <li>
+                                    <div>Окучники дисковые 390 мм</div>
+                                  </li>
+                                  <li>
+                                    <div>Плоскорезы</div>
+                                  </li>
+                                  <li>
+                                    <div>Плоскорезы-рыхлители</div>
+                                  </li>
+                                  <li>
+                                    <div>Культиваторы "Ежик"</div>
+                                  </li>
+                                </ul>
+
+                              <li>
+                                <div>Плуг</div>
+                              </li>
+                              <li>
+                                <div>Картофелекопалка (лапа)</div>
+                              </li>
+                              <li>
+                                <div>Плоскорез-рыхлитель КУ5</div>
+                              </li>
+                              <li>
+                                <div>Окучник дисковый 360 мм ПД6</div>
+                              </li>
+                              <li>
+                                <div>Окучник-пропольник эконом 360 мм ПД9</div>
+                              </li>
+                            </ul>
+                          <li>
+                            <div>Грунтозацепы</div>
+                          </li>
+                          <li>
+                            <div>Полуоси</div>
+                          </li>
+                          <li>
+                            <div>Дифференциалы</div>
+                          </li>
+                          <li>
+                            <div>Ходоуменьшители</div>
+                            <ul>
+                              <li>
+                                <div>Цепные</div>
+                              </li>
+                              <li>
+                                <div>Редукторные</div>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <div>Бороны</div>
+                          </li>
+
+                          <li>
+                            <div>Картофелекопатели вибрационные</div>
+                            <ul>
+                              <li>
+                                <div>Грохотные</div>
+                              </li>
+                              <li>
+                                <div>Транспортерные</div>
+                              </li>
+                              <li>
+                                <div>Редукторные</div>
+                              </li>
+                            </ul>
+                          </li>
+
+                          <li>
+                            <div>Картофелесажалки</div>
+                            <ul>
+                              <li>
+                                <div>Комплекты для посадки</div>
+                              </li>
+                              <li>
+                                <div>Механические</div>
+                                <ul>
+                                  <li>
+                                    <div>Цепные</div>
+                                  </li>
+                                  <!--  <ul>
+                     <li><div>С бункером для удобрений</div></li>
+                     <li><div>Без бункера для удобрений</div></li>
+                   </ul></li> -->
+                                  <li>
+                                    <div>Ленточные</div>
+                                  </li>
+                                </ul>
+                              </li>
+
+                            </ul>
+                          </li>
+                          <li>
+                            <div>Переходник для косилки</div>
+                          </li>
+                          <li>
+                            <div>Копалка чеснока</div>
+                          </li>
+                          <li>
+                            <div>Измельчитель веток-дровокол</div>
+                          </li>
+                        </ul>
+                    </ul>
+                  </div>
+
+                  <div id="voda" style="display: none">
+                    <ul class="tabletree">
+                      <li>
+                        <div class="txt-motobl">Мотоблок</div>
+                        <ul>
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('pch61.jpg','Передняя часть сцепки', 'pch61')">
+                                Передняя часть сцепки<span class="tooltiptext tooltip-bottom">СЦ30<image
+                                    src='IMG_tool/pch61_tool.jpg'></span></a></div>
+                            <ul>
+                              <li>
+                                <div><a class="tooltip"
+                                    href="javascript:changeMotoblokImage('sivalka2.jpg','Сеялка овощная','ci_all')">Сеялки
+                                    (2-х, 4-х рядные)<span class="tooltiptext">СІ1<image
+                                        src='IMG_tool/sivalka2_tool.jpg'></span></a></div>
+                              </li>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('chasnik3.jpg','Чеснокосажалка',
+        'ch_all')">Чеснокосажалки (1-но, 2-х, 3-х, 4-х рядные)<span class="tooltiptext">ЧС1 - ЧС4<image
+                                        src='IMG_tool/chasnik3_tool.jpg'></span></a></div>
+                              </li>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('komplekt_univer.jpg','Комплект для посадки картофеля',
+        'ks2')">Комплект для посадки картофеля (универсальный)<span class="tooltiptext">КС2<image
+                                        src='IMG_tool/komplekt_univer_tool.jpg'></span></a></div>
+                              </li>
+
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('adapter1.jpg','Адаптер',
+        'ad1')">Адаптер<span class="tooltiptext">АД1<image src='IMG_tool/adapter1_tool.jpg'></span></a></div>
+
+                                <ul>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('gr1.jpg','Грабли механические',
+        'gr1')">Грабли механические<span class="tooltiptext">ГР1<image src='IMG_tool/gr1_tool.jpg'></span></a></div>
+                                  </li>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('gr3.jpg','Грабли Солнышко',
+        'gr3')">Грабли "Солнышко" 2-х колесные<span class="tooltiptext">ГР3<image src='IMG_tool/gr3_tool.jpg'>
+                                        </span></a></div>
+                                  </li>
+
+
+                                </ul>
+                              </li>
+                            </ul>
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('scepka_zirka_61_1.jpg','Сцепка 61','sc2')">Сцепка
+                                регулировочная<span class="tooltiptext tooltip-bottom">СЦ2<image
+                                    src='IMG_tool/scepka_zirka_61_tool.jpg'></span></a></div>
+                            <ul>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('sczepka-dvojnaya-universalnaya_1.jpg','Сцепка двойная',
+        'sc5')"> Сцепка двойная<span class="tooltiptext">СЦ5<image src='IMG_tool/scepka_zirka_dv_tool.jpg'></span></a>
+                                </div>
+                                <ul>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('pd3.jpg','Окучники Стрелы',
+        'pd3')"> Окучники "Стрелы"<span class="tooltiptext">ПД3<image src='IMG_tool/pd3_tool.jpg'></span></a></div>
+                                  </li>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('pd7.jpg','Окучники дисковые 390 мм',
+        'pd7')"> Окучники дисковые 390 мм (пара)<span class="tooltiptext">ПД7<image src='IMG_tool/pd7_tool.jpg'>
+                                        </span></a></div>
+                                  </li>
+
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('ku1.jpg','Плоскорезы',
+        'ku1')"> Плоскорезы<span class="tooltiptext">КУ1<image src='IMG_tool/ku1_tool.jpg'></span></a></div>
+                                  </li>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('ku5.jpg','Плоскорез-рыхлитель',
+        'ku5_para')"> Плоскорезы-рыхлители КУ5 (пара)<span class="tooltiptext">КУ5<image src='IMG_tool/ku5_tool.jpg'>
+                                        </span></a></div>
+                                  </li>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('ku10.jpg','Культиваторы Ежик',
+        'ku10')"> Культиваторы "Ежик" КУ10 (пара)<span class="tooltiptext">КУ10<image src='IMG_tool/ku10_tool.jpg'>
+                                        </span></a></div>
+                                  </li>
+
+                                </ul>
+
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('pl3.jpg','Плуг',
+        'pl3')"> Плуг<span class="tooltiptext">ПЛ3<image src='IMG_tool/pl3_tool.jpg'></span></a></div>
+                              </li>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('kk3.jpg','Картофелекопатель',
+        'kk_all')"> Картофелекопатель (лапа)<span class="tooltiptext">KK3<image src='IMG_tool/kk3_tool.jpg'></span></a>
+                                </div>
+                              </li>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('ku3.jpg','Плоскорез 700',
+        'ku3')"> Плоскорез 700 мм КУ3<span class="tooltiptext">КУ3<image src='IMG_tool/ku3_tool.jpg'></span></a></div>
+                              </li>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('ku5.jpg','Плоскорез-рыхлитель',
+        'ku5')"> Плоскорез-рыхлитель КУ5<span class="tooltiptext">КУ5<image src='IMG_tool/ku5_tool.jpg'></span></a>
+                                </div>
+                              </li>
+
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('pd6.jpg','Окучник дисковый 360 мм (комплект)',
+        'pd6')"> Окучник дисковый 360 мм ПД6<span class="tooltiptext">ПД6<image src='IMG_tool/pd6_tool.jpg'></span></a>
+                                </div>
+                              </li>
+
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('pd9.jpg','Окучник-пропольник эконом 360 мм (комплект)',
+        'pd9')"> Окучник-пропольник эконом 360 мм ПД9<span class="tooltiptext">ПД9<image src='IMG_tool/pd9_tool.jpg'>
+                                    </span></a></div>
+                              </li>
+
+                            </ul>
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('ko22.jpg','Грунтозацепы',
+        'ko_61')"> Грунтозацепы<span class="tooltiptext">КО20, КО22<image
+                                    src='IMG_tool/ko22_tool.jpg'></span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('pl4.jpg','Плуг с опорным колесом',
+        'pl4')"> Плуг с опорным колесом<span class="tooltiptext">ПЛ4<image src='IMG_tool/pl4_tool.jpg'></span></a>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('ku6.jpg','Культиватор Ежик (комплект)',
+        'ku6')"> Культиватор "Ежик" комплект<span class="tooltiptext">КУ6<image src='IMG_tool/ku6_tool.jpg'></span></a>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('ku8.jpg','Пропольник широкорядный',
+        'ku8')"> Пропольник широкорядный<span class="tooltiptext">КУ8<image src='IMG_tool/ku8_tool.jpg'></span></a>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('kk8.jpg','Картофелекопатели вибрационные',
+        'kk_61_vse')"> Картофелекопатели вибрационные<span class="tooltiptext">КК8, КК10<image
+                                    src='IMG_tool/kk8_tool.jpg'></span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('ks8.jpg','Картофелесажалки механические',
+        'ks_61_vse')"> Картофелесажалки механические<span class="tooltiptext tooltip-top">КС3, КС4, КС8<image
+                                    src='IMG_tool/ks8_tool.jpg'></span></a></div>
+                          </li>
+
+
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('ks7.jpg','Комплект для посадки картофеля','ks7')">
+                                Комплект для посадки картофеля<span class="tooltiptext tooltip-top">КС7<image
+                                    src='IMG_tool/ks7_tool.jpg'></span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('chk1.jpg','Копалка чеснока','chk1')"> Копалка
+                                чеснока<span class="tooltiptext tooltip-top">ЧК1<image src='IMG_tool/chk1_tool.jpg'>
+                                </span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('dr7.jpg','Измельчитель веток-дровокол','dr_all')">
+                                Измельчитель веток-дровокол<span class="tooltiptext tooltip-top">ДР7, ДР17<image
+                                    src='IMG_tool/dr7_tool.jpg'></span></a></div>
+                          </li>
+
+                        </ul>
+                    </ul>
+                  </div>
+
+
+
+                  <div id="vozduh" style="display: none">
+                    <ul class="tabletree">
+                      <li>
+                        <div class="txt-motobl">Мотоблок</div>
+                        <ul>
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('pch105.jpg','Передняя часть сцепки', 'pchs105')">
+                                Передняя часть сцепки<span class="tooltiptext tooltip-bottom">СЦ30<image
+                                    src='IMG_tool/pch105_tool.jpg'></span></a></div>
+
+                            <ul>
+                              <li>
+                                <div><a class="tooltip"
+                                    href="javascript:changeMotoblokImage('sivalka2.jpg','Сеялка овощная','ci_all')">Сеялки
+                                    (2-х, 4-х рядные)<span class="tooltiptext">СІ1<image
+                                        src='IMG_tool/sivalka2_tool.jpg'></span></a></div>
+                              </li>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('chasnik3.jpg','Чеснокосажалка',
+        'ch_all')">Чеснокосажалки (1-но, 2-х, 3-х, 4-х рядные)<span class="tooltiptext">ЧС1-ЧС4<image
+                                        src='IMG_tool/chasnik3_tool.jpg'></span></a></div>
+                              </li>
+
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('komplekt_univer.jpg','Комплект для посадки картофеля',
+        'ks2')">Комплект для посадки картофеля (универсальный)<span class="tooltiptext">КС2<image
+                                        src='IMG_tool/komplekt_univer_tool.jpg'></span></a></div>
+                              </li>
+
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('adapter2.jpg','Адаптер',
+        'ad2')">Адаптер<span class="tooltiptext">АД2<image src='IMG_tool/adapter2_tool.jpg'></span></a></div>
+                                <ul>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('gr1.jpg','Грабли механические',
+        'gr1')">Грабли механические<span class="tooltiptext">ГР1<image src='IMG_tool/gr1_tool.jpg'></span></a></div>
+                                  </li>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('gr3.jpg','Грабли Солнышко',
+        'gr3')">Грабли "Солнышко" 2-х колесные<span class="tooltiptext">ГР3<image src='IMG_tool/gr3_tool.jpg'>
+                                        </span></a></div>
+                                  </li>
+
+                                </ul>
+                              </li>
+                            </ul>
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('scepka_zirka_105_1.jpg','Сцепка 105',
+        'sc1')">Сцепка регулировочная<span class="tooltiptext tooltip-bottom">СЦ1<image
+                                    src='IMG_tool/scepka_zirka_105_tool.jpg'></span></a></div>
+
+
+
+                            <ul>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('sczepka-dvojnaya-universalnaya_1.jpg','Сцепка двойная',
+        'sc5')"> Сцепка двойная<span class="tooltiptext">СЦ5<image src='IMG_tool/scepka_zirka_dv_tool.jpg'></span></a>
+                                </div>
+                                <ul>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('pd3.jpg','Окучники Стрелы',
+        'pd3')"> Окучники "Стрелы"<span class="tooltiptext">ПД3<image src='IMG_tool/pd3_tool.jpg'></span></a></div>
+                                  </li>
+
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('pd7.jpg','Окучники дисковые 390 мм',
+        'pd7')"> Окучники дисковые 390 мм (пара)<span class="tooltiptext">ПД7<image src='IMG_tool/pd7_tool.jpg'>
+                                        </span></a></div>
+                                  </li>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('ku1.jpg','Плоскорезы',
+        'ku1')"> Плоскорезы<span class="tooltiptext">КУ1<image src='IMG_tool/ku1_tool.jpg'></span></a></div>
+                                  </li>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('ku5.jpg','Плоскорез-рыхлитель',
+        'ku5_para')"> Плоскорезы-рыхлители КУ5 (пара)<span class="tooltiptext">КУ5<image src='IMG_tool/ku5_tool.jpg'>
+                                        </span></a></div>
+                                  </li>
+                                  <li>
+                                    <div><a class="tooltip" href="javascript:changeMotoblokImage('ku10.jpg','Культиваторы Ежик',
+        'ku10')"> Культиваторы "Ежик" КУ10 (пара)<span class="tooltiptext">КУ10<image src='IMG_tool/ku10_tool.jpg'>
+                                        </span></a></div>
+                                  </li>
+                                </ul>
+
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('pl3.jpg','Плуг',
+        'pl3')"> Плуг<span class="tooltiptext">ПЛ3<image src='IMG_tool/pl3_tool.jpg'></span></a></div>
+                              </li>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('kk3.jpg','Картофелекопатель',
+        'kk_all')"> Картофелекопатель (лапа)<span class="tooltiptext">KK3<image src='IMG_tool/kk3_tool.jpg'></span></a>
+                                </div>
+                              </li>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('ku3.jpg','Плоскорез 700',
+        'ku3')"> Плоскорез 700 мм КУ3<span class="tooltiptext">КУ3<image src='IMG_tool/ku3_tool.jpg'></span></a></div>
+                              </li>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('ku5.jpg','Плоскорез-рыхлитель',
+        'ku5')"> Плоскорез-рыхлитель КУ5<span class="tooltiptext">КУ5<image src='IMG_tool/ku5_tool.jpg'></span></a>
+                                </div>
+                              </li>
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('pd6.jpg','Окучник дисковый 360 мм (комплект)',
+        'pd6')"> Окучник дисковый 360 мм ПД6<span class="tooltiptext">ПД6<image src='IMG_tool/pd6_tool.jpg'></span></a>
+                                </div>
+                              </li>
+
+                              <li>
+                                <div><a class="tooltip" href="javascript:changeMotoblokImage('pd9.jpg','Окучник-пропольник эконом 360 мм (комплект)',
+        'pd9')"> Окучник-пропольник эконом 360 мм ПД9<span class="tooltiptext">ПД9<image src='IMG_tool/pd9_tool.jpg'>
+                                    </span></a></div>
+                              </li>
+                            </ul>
+
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('ko17.jpg','Грунтозацепы',
+        'ko_105')"> Грунтозацепы<span class="tooltiptext">КО2, КО10, КО16, КО17<image
+                                    src='IMG_tool/ko17_tool.jpg'></span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('nv2.jpg','Полуоси',
+        'nv_all')"> Полуоси<span class="tooltiptext">НВ2, НВ4, НВ5<image src='IMG_tool/nv2_tool.jpg'></span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('df2.jpg','Дифференциалы',
+        'df_vse')"> Дифференциалы<span class="tooltiptext">ДФ2, ДФ4, ДФ5<image src='IMG_tool/df2_tool.jpg'></span></a>
+                            </div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('zh2.jpg','Ходоуменьшители цепные',
+        'zxc_all')"> Ходоуменьшители цепные<span class="tooltiptext">ЗХ1, ЗХ2<image src='IMG_tool/zh2_tool.jpg'>
+                                </span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('zh4.jpg','Ходоуменьшители редукторные', 'zxr_all')">
+                                Ходоуменьшители редукторные<span class="tooltiptext">ЗХ4, ЗХ5<image
+                                    src='IMG_tool/zh4_tool.jpg'></span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('rb2.jpg','Бороны роторные (пара)', 'rb_all')">
+                                Бороны роторные (пара)<span class="tooltiptext tooltip-top">РБ1, РБ2, РБ3<image
+                                    src='IMG_tool/rb2_tool.jpg'></span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('kk17.jpg','Картофелекопатели вибрационные 2-х эксцентриковые', 'kk_105_all')">
+                                Картофелекопатели вибрационные 2-х эксцентриковые<span
+                                  class="tooltiptext tooltip-top">КК9, КК17, КК18<image src='IMG_tool/kk17_tool.jpg'>
+                                </span></a></div>
+                          </li>
+
+
+                          <li>
+                            <div><a class="tooltip" href="javascript:changeMotoblokImage('ks8.jpg','Картофелесажалки механические',
+        'ks_61_vse')"> Картофелесажалки механические<span class="tooltiptext tooltip-top">КС3, КС4, КС8<image
+                                    src='IMG_tool/ks8_tool.jpg'></span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('ks16.jpg','Комплект для посадки картофеля','ks16')">
+                                Комплект для посадки картофеля<span class="tooltiptext tooltip-top">КС16<image
+                                    src='IMG_tool/ks16_tool.jpg'></span></a></div>
+                          </li>
+
+                          <li>
+                            <div><a class="tooltip"
+                                href="javascript:changeMotoblokImage('pk1.jpg','Переходник для косилки','pk1')">
+                                Переходник для косилки<span class="tooltiptext tooltip-top">ПК1<image
+                                    src='IMG_tool/pk1_tool.jpg'></span></a></div>
+                          </li>
+
+                        </ul>
+                    </ul>
+                  </div>
+
+
+
+
+              </tr>
+
+
+        </td> <!-- <td width="10%"></td>-->
+        </tbody>
+
+
+
+
+
+      </tr>
+
+    </table>
+  </div>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    document.getElementById('Radios1').onclick = function () {
+      $("div.info").empty();
+      document.getElementById('baza').style.display = 'none';
+      document.getElementById('imgm').style.display = 'none';
+      changeMotoblokImage('forte.jpg', 'Мотоблок для примера', '');
+      document.getElementById('vozduh').style.display = 'none';
+      document.getElementById('vod').style.display = 'inline';
+
+      $('#voda').fadeIn({
+        duration: 'slow',
+        easing: 'linear'
+      });
+    };
+
+    document.getElementById('Radios2').onclick = function () {
+      $("div.info").empty();
+      document.getElementById('baza').style.display = 'none';
+      document.getElementById('voda').style.display = 'none';
+      document.getElementById('imgm').style.display = 'none';
+      changeMotoblokImage('kentavr.jpg', 'Мотоблок для примера', '');
+      document.getElementById('vod').style.display = 'inline';
+
+      $('#vozduh').fadeIn({
+        duration: 'slow',
+        easing: 'linear'
+      });
+    };
+
+
+    function changeMotoblokImage(newImage, newLabel, newText) {
+      var elem = document.getElementById('motoblok');
+      elem.src = 'IMG/' + newImage;
+      var lbl = document.getElementById('vod');
+      if (document.documentElement.clientWidth > 600) {
+        lbl.dataset.label = newLabel;
+      } else {
+        lbl.dataset.label = "";
+      }
+
+      $("div.info").empty();
+      if (newText != 0) {
+        var filetxt = 'file:///D:/JS/TXT/' + newText + '.txt';
+        changeInfo(filetxt);
+      };
+
+    }
+
+
+    function changeInfo(newUrl) {
+      $.ajax({
+        url: newUrl,
+        dataType: 'html',
+        async: true,
+        success: function (data) {
+          data = '<div id="slide_lft">' + '<div id="slide_in">' +
+            data + '</div></div>';
+          $('div.info').append(data);
+        }
+      });
+    }
+  </script>
+
+
+</body>
+
+</html>

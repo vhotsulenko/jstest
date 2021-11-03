@@ -1,0 +1,16 @@
+﻿КУ3 (шт)<br>
+<br>&nbsp;&nbsp;&nbsp; Плоскорез шириной
+700 мм. Предназначен для безотвального
+выравнивания и прополки почвы, для сплошной
+обработки почвы, также позволяет
+обрабатывать широкие междурядья овощных
+культур. Агрегатируется с мотоблоком при
+помощи <a class="tooltip" href="#">регулировочной сцепки<span class= "tooltiptext"> <image  src='IMG_tool/scepka_zirka_105_tool.jpg'></span></a> (приобретается
+отдельно). 
+<br>Высота 500 мм, вес 4,7 кг.
+<br>&nbsp;&nbsp;&nbsp;Также в ассортименте:
+  <br>КУ1 (пара) - <a class="tooltip" href="javascript:changeMotoblokImage('ku1.jpg','КУ1 - Плоскорезы 320 мм',
+        'ku1')">плоскорезы шириной 320 мм<span class= "tooltiptext"> <image  src='IMG_tool/ku1_tool.jpg'></span></a>. Агрегатируются с мотоблоком при
+помощи <a class="tooltip" href="#">регулировочной<span class= "tooltiptext tooltip-top"> <image  src='IMG_tool/scepka_zirka_105_tool.jpg'></span></a> и 
+<a class="tooltip" href="#">двойной сцепки<span class= "tooltiptext tooltip-top"> <image  src='IMG_tool/scepka_zirka_dv_tool.jpg'></span></a> (приобретается
+отдельно). Вес 4,4 кг.

@@ -1,0 +1,16 @@
+﻿ЧС1 	
+<br>&nbsp;&nbsp;&nbsp; Сажалка для зубчиков чеснока калибром 15-25 мм.
+Ёмкость бункера 10 литров. Шаг посадки регулируемый: 110 мм, 125 мм, 140 мм.
+Глубина посадки регулируемая 60-80 мм.
+<br>Габаритные размеры 970х950х280 мм; вес 20 кг.
+<br>&nbsp;&nbsp;&nbsp; Агрегатируется при помощи передней части сцепки (приобретается
+отдельно, зависит от мотоблока).
+<br>&nbsp;&nbsp;&nbsp;В ассортименте:
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('chasnik1.jpg','Чеснокосажалка ЧС1',
+        'чс1')">1-рядная:<span class= "tooltiptext">ЧС1<image  src='IMG_tool/chasnik1_tool.jpg'></span></a> размеры 970х950х280 мм; вес 20 кг.
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('chasnik2.jpg','Чеснокосажалка ЧС2',
+        'чс2')">2-рядная:<span class= "tooltiptext">ЧС2<image  src='IMG_tool/chasnik2_tool.jpg'></span></a> размеры 1280х800х970 мм; вес 47 кг. Междурядье: 200-580 мм. Колея: 1150 мм.
+  <br><a class="tooltip" href="javascript:changeMotoblokImage('chasnik3.jpg','Чеснокосажалка ЧС3',
+        'чс3')">3-рядная:<span class= "tooltiptext tooltip-top">ЧС3<image  src='IMG_tool/chasnik3_tool.jpg'></span></a> размеры 1335х980х970 мм; вес 56 кг. Междурядье: 200-320 мм. Колея: 1185 мм.
+ <br><a class="tooltip" href="javascript:changeMotoblokImage('chasnik4.jpg','Чеснокосажалка ЧС4',
+        'чс4')">4-рядная:<span class= "tooltiptext tooltip-top">ЧС4<image  src='IMG_tool/chasnik4_tool.jpg'></span></a> размеры 2380х1060х970 мм; вес 73 кг. Междурядье: 200-530 мм. Колея: 2220 мм.
